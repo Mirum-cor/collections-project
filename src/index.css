@@ -1,13 +1,312 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --body-bg-1: #cadeeb;
+  --body-bg-2: #4a7796;
+  --reg-form-bg: rgba(167, 200, 223, 0.5);
+  --log-form-bg: rgba(227, 242, 253, 0.5);
+  --nav-bg: #e3f2fd;
+  --about-person-bg: rgba(227, 242, 253, 0.65);
+  --box-shadow: #14142e;
+  --text-color: #110952;
+  --primary: #007bff;
+  --primary-hover: #0069d9;
+  --success: #28a745;
+  --success-hover: #218838;
+  --info: #17a2b8;
+  --info-hover: #138496;
+  --warning: #ffc107;
+  --warning-hover: #e0a800;
+  --btn-text-first: #ffffff;
+  --btn-text-second: #000000;
+  --input-focus-border: #80bdff;
+  --input-box-shadow: 0 0 0 0.2rem rgba(35, 39, 44, 0.25);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Alegreya', serif;
+  font-size: 18px;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--body-bg);
+  background: -moz-linear-gradient(
+    left,
+    var(--body-bg-1) 0%,
+    var(--body-bg-2) 100%
+  );
+  background: -webkit-gradient(
+    left top,
+    right top,
+    color-stop(0%, var(--body-bg-1)),
+    color-stop(100%, var(--body-bg-2))
+  );
+  background: -webkit-linear-gradient(
+    left,
+    var(--body-bg-1) 0%,
+    var(--body-bg-2) 100%
+  );
+  background: -o-linear-gradient(
+    left,
+    var(--body-bg-1) 0%,
+    var(--body-bg-2) 100%
+  );
+  background: -ms-linear-gradient(
+    left,
+    var(--body-bg-1) 0%,
+    var(--body-bg-2) 100%
+  );
+  background: linear-gradient(
+    to right,
+    var(--body-bg-1) 0%,
+    var(--body-bg-2) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=var(--body-bg-1), endColorstr=var(--body-bg-2), GradientType=1 );
+}
+
+div {
+  color: var(--text-color);
+}
+
+/* Inputs */
+.form-control:focus {
+  border: var(--input-focus-border);
+  box-shadow: var(--input-box-shadow);
+}
+
+select > option:checked {
+  background-color: var(--primary);
+  color: var(--btn-text-first);
+}
+
+/* Buttons */
+.btn-outline-primary {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:active {
+  color: var(--btn-text-first);
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-primary {
+  color: var(--btn-text-first);
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+
+.btn-primary:not(:disabled):hover {
+  color: var(--btn-text-first);
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+.btn-primary:disabled {
+  color: var(--btn-text-first);
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+  opacity: 0.65;
+}
+
+.btn-info {
+  color: var(--btn-text-first);
+  background-color: var(--info);
+  border-color: var(--info);
+}
+
+.btn-info:not(:disabled):hover {
+  background-color: var(--info-hover);
+  border-color: var(--info-hover);
+}
+
+.btn-info:disabled {
+  background-color: var(--info-hover);
+  border-color: var(--info-hover);
+  opacity: 0.65;
+}
+
+.btn-warning {
+  color: var(--btn-text-second);
+  background-color: var(--warning);
+  border-color: var(--warning);
+}
+
+.btn-warning:hover {
+  background-color: var(--warning-hover);
+  border-color: var(--warning-hover);
+}
+
+.btn-success {
+  color: var(--btn-text-first);
+  background-color: var(--success);
+  border-color: var(--success);
+}
+
+.btn-success:not(:disabled):hover {
+  color: var(--btn-text-first);
+  background-color: var(--success-hover);
+  border-color: var(--success-hover);
+}
+
+.btn-success:disabled {
+  color: var(--btn-text-first);
+  background-color: var(--success-hover);
+  border-color: var(--success-hover);
+  opacity: 0.65;
+}
+
+/* Registration & Login*/
+
+.registration-form,
+.login-form {
+  background-color: var(--reg-form-bg);
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: 10px 10px 17px;
+  margin: 0 auto;
+  margin-top: 10vh;
+  max-width: 700px;
+  font-size: 1.2em;
+}
+
+.registration-form label,
+.login-form label {
+  font-weight: 700;
+}
+
+.login-form {
+  background-color: var(--log-form-bg);
+}
+
+.other-accounts button {
+  margin-right: 10px;
+}
+
+/* Navbar */
+
+.navigation {
+  background-color: var(--nav-bg);
+  box-shadow: 7px 1px 7px;
+  margin-bottom: 30px;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5em;
+}
+
+a.active {
+  font-style: italic;
+  text-shadow: 2px 2px 3px;
+}
+
+#themeSelect {
+  margin-right: 10px;
+}
+
+/* MyPage */
+
+.about-person {
+  background-color: var(--about-person-bg);
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px var(--box-shadow);
+  margin: 10px 40px;
+  padding: 20px;
+  text-align: center;
+  max-width: 600px;
+  color: var(--text-color);
+  float: left;
+}
+
+.about-person img {
+  max-width: 300px;
+  max-height: auto;
+  border-radius: 150px;
+  box-shadow: 3px 3px 21px var(--box-shadow);
+}
+
+.new-item {
+  display: inline-block;
+}
+
+.new-item Form {
+  background-color: var(--about-person-bg);
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px var(--box-shadow);
+  margin: 10px 40px;
+  padding: 20px;
+  text-align: center;
+  color: var(--text-color);
+  width: 600px;
+}
+
+.item-picture {
+  max-width: 100px;
+  height: auto;
+}
+
+.upload-picture {
+  float: left;
+  margin-left: 50px;
+  margin-right: 10px;
+}
+
+/* Item */
+
+.card {
+  background-color: var(--nav-bg);
+  border: 1px solid var(--log-form-bg);
+  color: var(--text-color);
+  display: inline-block;
+  margin: 10px;
+}
+
+.card-img {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.card-img img {
+  max-height: 200px;
+  max-height: 200px;
+  width: auto;
+  height: auto;
+}
+
+/* Item Detail */
+
+.to-main-page {
+  margin-left: 30px;
+  float: left;
+}
+
+.current-item {
+  text-align: center;
+  margin-top: 50px;
+  background-color: var(--log-form-bg);
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: 10px 10px 17px;
+  font-size: 1.2em;
+  min-height: 400px;
+}
+
+/* Current Item */
+
+.current-item-photo {
+  max-width: 400px;
+  max-height: 400px;
+  width: auto;
+  height: auto;
+  float: left;
+  margin-right: 15px;
+  border-radius: 50px;
+}
+
+.current-item p {
+  text-align: justify;
 }
