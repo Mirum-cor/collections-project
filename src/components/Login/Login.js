@@ -179,6 +179,7 @@ class Login extends Component {
               <Button
                 variant='info'
                 type='submit'
+                disabled
                 onClick={this.loginGitHubHandler.bind(this)}
               >
                 GitHub-аккаунт

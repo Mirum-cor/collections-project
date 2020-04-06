@@ -211,6 +211,7 @@ class Registration extends Component {
               <Button
                 variant='info'
                 type='submit'
+                disabled
                 onClick={this.registerGitHubHandler.bind(this)}
               >
                 GitHub-аккаунт

@@ -1,43 +1,49 @@
 import React, { Component } from 'react';
-import { Form, Col, Row, Button } from 'react-bootstrap';
+import { Form, Col, Row, Button, Container } from 'react-bootstrap';
+import map from 'lodash/map';
 import { auth, database, storage } from '../../firebase';
 import '../../index.css';
 import Navbar from '../Navbar/Navbar';
+import Item from '../Item/Item';
 
 class MyPage extends Component {
-  state = {
-    isFormValid: false,
-    formControls: {
-      title: {
-        controlId: 'formHorizontalTitle',
-        label: 'Название',
-        value: '',
-        type: 'text',
-        placeholder: 'Предмет коллекции',
+  constructor(props) {
+    super(props);
+    this.state = {
+      collections: null,
+      isFormValid: false,
+      formControls: {
+        title: {
+          controlId: 'formHorizontalTitle',
+          label: 'Название',
+          value: '',
+          type: 'text',
+          placeholder: 'Предмет коллекции',
+        },
+        description: {
+          controlId: 'formHorizontalDescription',
+          label: 'Описание',
+          value: '',
+          type: 'textarea',
+          placeholder: 'Введите описание предмета',
+        },
+        select: {
+          controlId: 'exampleForm.ControlSelect2',
+          label: 'Выберите категорию',
+          value: 'Разное',
+          type: 'select',
+        },
+        photo: {
+          controlId: 'exampleForm.ControlSelect2',
+          label: 'Загрузите фото',
+          value: '',
+          type: 'file',
+          src: '',
+          file: {},
+        },
       },
-      description: {
-        controlId: 'formHorizontalDescription',
-        label: 'Описание',
-        value: '',
-        type: 'textarea',
-        placeholder: 'Введите описание предмета',
-      },
-      select: {
-        controlId: 'exampleForm.ControlSelect2',
-        label: 'Выберите категорию',
-        value: 'Разное',
-        type: 'select',
-      },
-      photo: {
-        controlId: 'exampleForm.ControlSelect2',
-        label: 'Загрузите фото',
-        value: '',
-        type: 'file',
-        src: '',
-        file: {},
-      },
-    },
-  };
+    };
+  }
   logoutHandler(event) {
     event.preventDefault();
     auth.signOut();
@@ -219,6 +225,11 @@ class MyPage extends Component {
       </Form>
     );
   }
+  componentDidMount() {
+    database.ref(`collections`).on('value', (snapshot) => {
+      this.setState({ collections: snapshot.val() });
+    });
+  }
   render() {
     return (
       <div>
@@ -249,6 +260,20 @@ class MyPage extends Component {
           </div>
           <div className='new-item'>{this.renderNewItemForm()}</div>
         </div>
+        <Container>
+          {map(this.state.collections, (item, itemName) =>
+            item.author === auth.currentUser.displayName ? (
+              <Item
+                key={itemName}
+                photoURL={item.photoURL}
+                title={item.title}
+                select={item.select}
+                author={item.author}
+                description={item.description}
+              />
+            ) : null,
+          )}
+        </Container>
       </div>
     );
   }
