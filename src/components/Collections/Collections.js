@@ -12,6 +12,12 @@ class Collections extends Component {
       collections: null,
     };
   }
+/*   oneMoreLike(likesNumber, itemName) {
+    likesNumber++;
+    database.ref(`collections/${itemName}`).update({
+      likesNumber,
+    });
+  } */
   componentDidMount() {
     database.ref(`collections`).on('value', (snapshot) => {
       this.setState({ collections: snapshot.val() });
@@ -25,11 +31,14 @@ class Collections extends Component {
           {map(this.state.collections, (item, itemName) => (
             <Item
               key={itemName}
+              // itemName={itemName}
               photoURL={item.photoURL}
               title={item.title}
               select={item.select}
               author={item.author}
               description={item.description}
+              likesNumber={item.likesNumber}
+              // oneMoreLike={this.oneMoreLike}
             />
           ))}
         </Container>

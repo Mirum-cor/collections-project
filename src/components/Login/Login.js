@@ -176,14 +176,14 @@ class Login extends Component {
               >
                 Google-аккаунт
               </Button>
-              <Button
+              {/* <Button
                 variant='info'
                 type='submit'
                 disabled
                 onClick={this.loginGitHubHandler.bind(this)}
               >
                 GitHub-аккаунт
-              </Button>
+              </Button> */}
             </div>
           </Form>
         </Container>

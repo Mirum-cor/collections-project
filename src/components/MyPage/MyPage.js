@@ -87,6 +87,8 @@ class MyPage extends Component {
       author: currentUserName,
       uid: currentUserUid,
       photoURL: photoSrc,
+      likesNumber: 0,
+      liked: '',
     });
     document.forms.newItemForm.reset();
     this.props.history.push('/');
@@ -265,11 +267,14 @@ class MyPage extends Component {
             item.author === auth.currentUser.displayName ? (
               <Item
                 key={itemName}
+                // itemName={itemName}
                 photoURL={item.photoURL}
                 title={item.title}
                 select={item.select}
                 author={item.author}
                 description={item.description}
+                likesNumber={item.likesNumber}
+                // oneMoreLike={this.oneMoreLike}
               />
             ) : null,
           )}

@@ -19,6 +19,7 @@ class Item extends Component {
             <i>Категория:</i> {this.props.select}
             <br />
             <i>Автор:</i> {this.props.author}
+            {/* <img src="https://firebasestorage.googleapis.com/v0/b/collections-project.appspot.com/o/collections%2Flike.png?alt=media&token=690c33bb-6d3e-48e9-ad4b-8a31409083ae" alt="like" // onClick={this.props.oneMoreLike(this.props.likesNumber, this.props.itemName)} /> {this.props.likesNumber} */}
             <br />
             {partOfDescription}
           </Card.Text>

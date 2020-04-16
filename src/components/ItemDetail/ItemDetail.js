@@ -33,11 +33,13 @@ class ItemDetail extends Component {
             return item.title === title ? (
               <CurrentItem
                 key={itemName}
+                // itemName={itemName}
                 photoURL={item.photoURL}
                 title={item.title}
                 select={item.select}
                 author={item.author}
                 description={item.description}
+                likesNumber={item.likesNumber}
               />
             ) : null;
           })}

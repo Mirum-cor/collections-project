@@ -129,7 +129,7 @@ class Navbar extends Component {
                   <option value='dark'>Тёмное оформление</option>
                 </select>
               </div>
-              <input
+              {/* <input
                 className='form-control mr-sm-2'
                 type='search'
                 placeholder='Что Вы хотите найти?'
@@ -141,7 +141,7 @@ class Navbar extends Component {
                 onClick={(event) => event.preventDefault()}
               >
                 Искать
-              </button>
+              </button> */}
             </form>
           </div>
         </nav>

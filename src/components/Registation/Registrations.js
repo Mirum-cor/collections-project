@@ -208,14 +208,14 @@ class Registration extends Component {
               >
                 Google-аккаунт
               </Button>
-              <Button
+              {/* <Button
                 variant='info'
                 type='submit'
                 disabled
                 onClick={this.registerGitHubHandler.bind(this)}
               >
                 GitHub-аккаунт
-              </Button>
+              </Button> */}
             </div>
           </Form>
         </Container>
